@@ -465,10 +465,10 @@
       "pieces": [
         "asana"
       ],
-      "affected": 28,
-      "title": "asana paid-plan features — 28 atomics (search, dependencies, custom fields, goals, portfolios, allocations, project members, templates)",
-      "why": "These endpoints return 402 Payment Required on a free Asana workspace (search, task dependencies, custom fields, goals, portfolios, allocations, private-project members and followers) or need an object that can only be created on a paid plan: 26 atomics in #15758 and 2 in #15757. They are built, reviewed and covered by mocked tests, but were not live-tested, and 23 of them have no outputSchema because their entity was never captured. The 7 workspace/team membership and user atomics in #15758 were live-tested on 2026-09-27 with a second test account and a throwaway team; team visibility <code>secret</code> returns HTTP 500 on a free plan. 2 atomics in #15757 (remove_project_members, delete_membership) are still skipped for safety.",
-      "fix": "Request an Asana developer sandbox with Advanced/Enterprise features (Asana grants these on request), connect it on the dev stack, run Tier-2 on the 28 plan-gated atomics plus remove_project_members and delete_membership, and write the missing outputSchemas from the captures."
+      "affected": 26,
+      "title": "asana paid-plan features — 26 atomics (search, dependencies, custom fields, goals, portfolios, allocations, templates)",
+      "why": "These endpoints in #15758 return 402 Payment Required on a free Asana workspace (search, task dependencies, custom fields, goals, portfolios, allocations) or need an object that can only be created on a paid plan. They are built, reviewed and covered by mocked tests, but were not live-tested, and 23 of them have no outputSchema because their entity was never captured. Everything else is live: on 2026-09-27 the 7 workspace/team membership and user atomics (#15758) and the 5 project membership atomics (#15757) were tested with a second test account and throwaway projects/teams. Team visibility <code>secret</code> returns HTTP 500 on a free plan.",
+      "fix": "Request an Asana developer sandbox with Advanced/Enterprise features (Asana grants these on request), connect it on the dev stack, run Tier-2 on the 26 plan-gated atomics, and write the missing outputSchemas from the captures."
     },
     {
       "id": "shopify-legacy-auth",
